@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/postfeedback_camera"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginVertical="10dp"
+                android:src="@drawable/ic_camera_alt_black_24dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textGR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="TO : "
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/postfeedback_grNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/textGR"
+                    android:hint="Enter GR No. "
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:padding="15dp" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/postfeedback_homework"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/squreborder"
+                android:gravity="center"
+                android:hint="Enter Text"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/postfeedback_submit"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:background="@color/colorRed"
+                android:fontFamily="sans-serif-light"
+                android:text="Submit"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
