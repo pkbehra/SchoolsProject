@@ -23,6 +23,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -63,9 +64,8 @@ public class PostEvent extends Fragment {
     private static final int RESULT_CANCELED = 0;
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "https://orapune.com/API_TEST/event/notification.php";
+    private String url = "https://orapune.com/API_TEST/event/postevents.php";
     Button send;
-
 
 
     Bitmap bitmap;
@@ -88,7 +88,6 @@ public class PostEvent extends Fragment {
     HttpURLConnection httpURLConnection;
 
 
-
     OutputStream outputStream;
 
     BufferedWriter bufferedWriter;
@@ -103,10 +102,11 @@ public class PostEvent extends Fragment {
     private int GALLERY = 1, CAMERA = 2;
 
     SharedPreferenceConfig sharedPreferenceConfig;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.postevntlayout,container,false);
+        View view = inflater.inflate(R.layout.postevntlayout, container, false);
         imageView = view.findViewById(R.id.camera);
         btn_submit = view.findViewById(R.id.submit);
         et_post = view.findViewById(R.id.homework);
@@ -244,27 +244,26 @@ public class PostEvent extends Fragment {
         mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String result) {
-                String kept = result.substring( 0, result.indexOf(","));
-                if (kept.trim().equals("file Added")){
-                    Toast.makeText(getActivity(), "Event Sent  Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), WelcomeActivity.class));
-//
+                if (result.trim().equals("data inserted")) {
+
+                    Intent intent=new Intent(getActivity(), WelcomeActivity.class);
+                    startActivity(intent);
+
+                    Toast.makeText(getActivity(), "Post Event Successful", Toast.LENGTH_SHORT).show();
+
+
                 }
 
+                if (result.trim().equals("data not inserted")) {
 
 
-//                        if (result.trim().equalsIgnoreCase("Your Image Has Been Uploaded.")) {
-//                        Toast.makeText(getActivity(), "Event Sent  Successful", Toast.LENGTH_SHORT).show();
-//
-//                        startActivity(new Intent(getActivity(), DashBoard.class));
-//
-//
-//                    }
+                    Toast.makeText(getActivity(), "Registration Failed " + "please try again", Toast.LENGTH_LONG).show();
 
-                if (result.trim().equalsIgnoreCase("Please Try Again")) {
-                    Toast.makeText(getActivity(), " Please Try Again", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), WelcomeActivity.class));
+                }
 
+                if (result.trim().equals("exception") || result.equals("unsuccessful")) {
+
+                    Toast.makeText(getActivity(), "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
 
                 }
 

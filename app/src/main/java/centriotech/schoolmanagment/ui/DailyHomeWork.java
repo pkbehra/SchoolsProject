@@ -54,13 +54,13 @@ public class DailyHomeWork extends Fragment {
 
     final int min = 20;
     final int max = 80;
-    int random ;
+    int random;
     ImageView imageView;
-    EditText et_post,et_gr;
+    EditText et_post, et_gr;
 
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "https://orapune.com/API_TEST/Homework/notification.php";
+    private String url = "https://orapune.com/API_TEST/Homework/posthomework.php";
     private static final int RESULT_CANCELED = 0;
 
 
@@ -86,7 +86,6 @@ public class DailyHomeWork extends Fragment {
     HttpURLConnection httpURLConnection;
 
 
-
     OutputStream outputStream;
 
     BufferedWriter bufferedWriter;
@@ -105,15 +104,15 @@ public class DailyHomeWork extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.dailyhomeworklayout,container,false);
+        View view = inflater.inflate(R.layout.dailyhomeworklayout, container, false);
 
-        imageView=view.findViewById(R.id.home_camera);
-        btn_submit=view.findViewById(R.id.home_submit);
-        et_post=view.findViewById(R.id.home_homework);
+        imageView = view.findViewById(R.id.home_camera);
+        btn_submit = view.findViewById(R.id.home_submit);
+        et_post = view.findViewById(R.id.home_homework);
 
-        sharedPreferenceConfig =new SharedPreferenceConfig(getActivity());
+        sharedPreferenceConfig = new SharedPreferenceConfig(getActivity());
 
-        Toast.makeText(getActivity(), ""+sharedPreferenceConfig, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "" + sharedPreferenceConfig, Toast.LENGTH_SHORT).show();
         byteArrayOutputStream = new ByteArrayOutputStream();
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -136,23 +135,7 @@ public class DailyHomeWork extends Fragment {
             public void onClick(View view) {
 
 
-
-//                if (bitmap!=null){
-               //     UploadImageToServer();
-//                }
-//                else{
-//
-//                    if (et_post.getText().toString().length()<1){
-//                        Toast.makeText(getActivity(), "Please Add Image OR Text ", Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        imageView.setImageResource(R.drawable.noimage);
-//                        Drawable d = imageView.getDrawable();
-//                        bitmap = ((BitmapDrawable)d).getBitmap();
-//                        UploadImageToServer();
-//                    }
-//
-//                }
-
+                UploadImageToServer();
 
 
             }
@@ -237,39 +220,36 @@ public class DailyHomeWork extends Fragment {
         ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
 
-        String home_classes= sharedPreferenceConfig.getClass("class");
-        String home_division=  sharedPreferenceConfig.getDivision("division");
-        insertImage(home_classes,home_division,ConvertImage,et_post.getText().toString());
+        String home_classes = sharedPreferenceConfig.getClass("class");
+        String home_division = sharedPreferenceConfig.getDivision("division");
+        insertImage(home_classes, home_division, ConvertImage, et_post.getText().toString());
 
     }
 
-    public  void  insertImage(final String S_class, final String S_div, final String S_image, final String S_message){
-        mStringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+    public void insertImage(final String S_class, final String S_div, final String S_image, final String S_message) {
+        mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String result) {
-                String kept = result.trim().substring( 0,result.indexOf(","));
-                if (kept.equals("file Added,")){
-                    Toast.makeText(getActivity(), "HomeWork Sent  Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), WelcomeActivity.class));
-//
+                if (result.trim().equals("data inserted")) {
+
+                    Intent intent = new Intent(getActivity(), WelcomeActivity.class);
+                    startActivity(intent);
+
+                    Toast.makeText(getActivity(), "Post HomeWork Successful", Toast.LENGTH_SHORT).show();
+
+
                 }
 
-//                if (result.trim().equalsIgnoreCase("Your Image Has Been Uploaded.")){
-//                    Toast.makeText(getActivity(), "Homework Sent  Successful", Toast.LENGTH_SHORT).show();
-//
-//                    startActivity(  new Intent(getActivity(),DashBoard.class));
-//
-//
-//
-//
-//                }
-
-                if (result.trim().equalsIgnoreCase( "Please Try Again")){
-                    Toast.makeText(getActivity(), " Please Try Again", Toast.LENGTH_SHORT).show();
-                    startActivity(  new Intent(getActivity(),WelcomeActivity.class));
+                if (result.trim().equals("data not inserted")) {
 
 
+                    Toast.makeText(getActivity(), "Registration Failed " + "please try again", Toast.LENGTH_LONG).show();
 
+                }
+
+                if (result.trim().equals("exception") || result.equals("unsuccessful")) {
+
+                    Toast.makeText(getActivity(), "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -279,17 +259,16 @@ public class DailyHomeWork extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Tag","Error :" + error.toString());
+                Log.i("Tag", "Error :" + error.toString());
 
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams()
-            {
+            protected Map<String, String> getParams() {
 
-                Map<String, String>  params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<String, String>();
                 params.put("class", S_class);
-                params.put("division",S_div );
+                params.put("division", S_div);
                 params.put("image", S_image);
                 params.put("message", S_message);
                 return params;

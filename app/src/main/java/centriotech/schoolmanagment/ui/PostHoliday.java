@@ -57,16 +57,17 @@ public class PostHoliday extends Fragment {
         return view;
     }
 
-
     public void postHoliday(final String Message) {
         mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String result) {
                 if (result.trim().equals("data inserted")) {
 
-                    AdminLogin adminLogin = new AdminLogin();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frame, adminLogin).commit();
+//                    AdminLogin adminLogin = new AdminLogin();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    fragmentManager.beginTransaction().replace(R.id.frame, adminLogin).commit();
+                    Intent intent=new Intent(getActivity(), WelcomeActivity.class);
+                    startActivity(intent);
 
                     Toast.makeText(getActivity(), "Post Holiday Successful", Toast.LENGTH_SHORT).show();
 
