@@ -474,7 +474,7 @@
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
-                    android:id="@+id/rlLogOutnew"
+                    android:id="@+id/admin_rlLogOutnew"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
