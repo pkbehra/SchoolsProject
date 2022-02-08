@@ -31,7 +31,7 @@
                 android:padding="10dp"
                 android:orientation="vertical">
                 <ImageView
-                    android:id="@+id/Fbook_img_id"
+                    android:id="@+id/Febook_img_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -51,7 +51,7 @@
                     android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/Fbook_title_id"
+                        android:id="@+id/Febook_title_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -61,10 +61,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Fmessage"
+                        android:id="@+id/Femessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/Fbook_title_id"
+                        android:layout_below="@+id/Febook_title_id"
                         android:visibility="visible"
                         android:textColor="@color/grey"
                         android:layout_marginBottom="5dp"

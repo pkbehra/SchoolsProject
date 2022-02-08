@@ -71,11 +71,11 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/trans_editprofile"
+                        android:id="@+id/parents_editprofile"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_launcher_background"
+                        android:src="@drawable/edit_image"
                         app:civ_border_color="@color/black" />
 
                     <TextView

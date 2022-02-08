@@ -208,35 +208,35 @@ public class AdminFeedBack extends Fragment {
 
             AdminViewHomeWorkAdapter adminViewHomeWorkAdapter=new AdminViewHomeWorkAdapter(Title,Description,b);
             recyclerView.setAdapter(adminViewHomeWorkAdapter);
-            adminViewHomeWorkAdapter.setOnItemClickListener(new AdminViewHomeWorkAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(int position) {
-                    String time=new SimpleDateFormat("yyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
-
-                    File path= Environment.getExternalStorageDirectory();
-                    File dir =new File(path+"/DCIM");
-                    dir.mkdir();
-                    String imagename=time+".PNG";
-                    File file=new File(dir,imagename);
-                    OutputStream out;
-
-                    try {
-
-                        out=new FileOutputStream(file);
-                        b.get(position).compress(Bitmap.CompressFormat.PNG,100,out);
-                        out.flush();
-                        out.close();
-
-                        Toast.makeText(getActivity(), "Image Saved", Toast.LENGTH_SHORT).show();
-
-                    }catch (Exception e){
-
-
-                        Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-            });
+//            adminViewHomeWorkAdapter.setOnItemClickListener(new AdminViewHomeWorkAdapter.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(int position) {
+//                    String time=new SimpleDateFormat("yyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
+//
+//                    File path= Environment.getExternalStorageDirectory();
+//                    File dir =new File(path+"/DCIM");
+//                    dir.mkdir();
+//                    String imagename=time+".PNG";
+//                    File file=new File(dir,imagename);
+//                    OutputStream out;
+//
+//                    try {
+//
+//                        out=new FileOutputStream(file);
+//                        b.get(position).compress(Bitmap.CompressFormat.PNG,100,out);
+//                        out.flush();
+//                        out.close();
+//
+//                        Toast.makeText(getActivity(), "Image Saved", Toast.LENGTH_SHORT).show();
+//
+//                    }catch (Exception e){
+//
+//
+//                        Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }
+//            });
 
 
 

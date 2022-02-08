@@ -1,850 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none"
- >
+    android:layout_height="170dp"
+    android:orientation="horizontal">
 
-
-    <LinearLayout
-        android:id="@+id/login_form"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvOrders"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorWhite"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:layout_height="170dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="5dp"
+        android:layout_rowWeight="1"
+        android:paddingBottom="50dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-
-
-            android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgLogo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Add Student's"
-                android:textAllCaps="false"
-                android:textColor="@color/colorRed"
-                android:textSize="20dp" />
-
-            <!-- Login progress -->
-            <ProgressBar
-                android:id="@+id/login_progress"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:visibility="gone" />
-
+            android:orientation="horizontal"
+            android:background="@color/colorWhite"
+            android:weightSum="5">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/gr_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/gr_no"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="GR No"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/roll_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/roll_no"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Roll No"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/stid_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/stud_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Student ID"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/name_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Name"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/mname_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Mother's Name"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/birth_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/birth"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_date_range_24"
-                        android:focusedByDefault="false"
-                        android:hint="Date of Birth"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dt_admission"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_date_range_24"
-                        android:focusedByDefault="false"
-                        android:hint="Date of Admission"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/gender"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/Fbook_img_id"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Gender"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="140dp"
-                    android:layout_marginRight="12dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:textStyle="normal">
-
-                    <RadioButton
-                        android:id="@+id/radioButton1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Male"
-                        android:textSize="18dp" />
-
-
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/radioGroup1"
-                        android:layout_alignLeft="@+id/radioGroup1"
-                        android:text="Female"
-                        android:textSize="18dp" />
-
-
-                </RadioGroup>
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/name_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Mobile"
-                        android:inputType="textPassword"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/religion_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/religion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Religion"
-                        android:maxLength="20"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/caste_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/caste"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Caste"
-                        android:maxLength="20"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/slt_class"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sltclass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusedByDefault="false"
-                        android:hint="Select Class"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/slt_div"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sltdiv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusedByDefault="false"
-                        android:hint="Select Division"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/slt_category"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sltcat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusedByDefault="false"
-                        android:hint="Select Category"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/slt_blood_group"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/slt_blood_groups"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusedByDefault="false"
-                        android:hint="Select Blood Group"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/logo" />
 
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/slt_house"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dtadmision_text_input"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/slthouse"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusedByDefault="false"
-                        android:hint="Select House"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Pass_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/pass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Password"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Cpass_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/cpass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Confirm Password"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Cnt_no"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/contact_no"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Contact No."
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/alt_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/alt_contact_no"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Alternate Contact No"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Email"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/adress_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Address"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/addhar_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:textColorHint="@color/black"
-                    android:textSize="10dp"
-                    app:hintTextAppearance="@style/HintTextStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/addhar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="Aadhar No"
-                        android:maxLength="10"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/physical"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Physically Disabled"
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
-                <RadioGroup
-                    android:id="@+id/radioGroup2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="140dp"
-                    android:layout_marginRight="12dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:textStyle="normal">
-
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/Fbook_title_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Yes"
-                        android:textSize="18dp" />
+                        android:layout_marginBottom="3dp"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
-
-                    <RadioButton
-                        android:id="@+id/radioButton4"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/Fmessage"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/radioGroup2"
-                        android:layout_alignLeft="@+id/radioGroup2"
-                        android:text="No"
-                        android:textSize="18dp" />
+                        android:layout_below="@+id/Fbook_title_id"
+                        android:visibility="visible"
+                        android:textColor="@color/grey"
+                        android:layout_marginBottom="5dp"
+                        android:maxLines="2"
+                        android:textSize="16dp"
+                        android:text="Description" />
 
 
-                </RadioGroup>
-            </RelativeLayout>
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="30dp"
-                android:background="@color/colorRed"
-                android:layout_marginBottom="70dp"
-                android:text="Add Student"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="5dp">
 
 
+                        <ImageView
+                            android:id="@+id/ivPopularWishlist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_favorite_border_black_24dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/ivPopularWishlistRed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_favorite_red_24dp"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
