@@ -71,7 +71,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/trans_editprofile"
+                        android:id="@+id/teacher_profiledits"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"

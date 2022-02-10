@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -45,7 +46,7 @@ public class UpdateTransport extends Fragment {
     private StringRequest mStringRequest1;
     private String url1 = "https://orapune.com/API_TEST/TransportProfileUpdate.php";
 
-    Button btn_update;
+    CardView btn_update;
     SharedPreferenceConfig sharedPreferenceConfig;
 
     EditText et_name,et_typeofvehicle,et_vehicleno,et_licenceNo;
@@ -65,8 +66,6 @@ public class UpdateTransport extends Fragment {
         final String Number=  sharedPreferenceConfig.getnum("user");
 
         final String token = SharedPreference.getInstance(getActivity()).getDeviceToken();
-
-        Toast.makeText(getActivity(), "Tokan"+token, Toast.LENGTH_SHORT).show();
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override

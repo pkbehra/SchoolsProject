@@ -15,20 +15,30 @@ import androidx.fragment.app.Fragment;
 import centriotech.schoolmanagment.LoginActivity;
 import centriotech.schoolmanagment.R;
 import centriotech.schoolmanagment.Utility.SharedPreferenceConfig;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdminProfile extends Fragment {
 
     RelativeLayout logout;
     SharedPreferenceConfig sharedPreferenceConfig;
+    CircleImageView admin_editprofile;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.adminprofile, container, false);
 
         logout=view.findViewById(R.id.admin_rlLogOutnew);
+        admin_editprofile=view.findViewById(R.id.admin_editprofile);
 
         sharedPreferenceConfig=new SharedPreferenceConfig(getActivity());
         String Number=  sharedPreferenceConfig.getnum("user");
+
+        admin_editprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Edit AdminProfile", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

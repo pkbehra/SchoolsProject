@@ -15,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import centriotech.schoolmanagment.LoginActivity;
 import centriotech.schoolmanagment.R;
 import centriotech.schoolmanagment.Utility.SharedPreferenceConfig;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TeacherProfile extends Fragment {
 
     RelativeLayout logout;
+    CircleImageView teacher_profiledits;
     SharedPreferenceConfig sharedPreferenceConfig;
     @Nullable
     @Override
@@ -26,6 +28,13 @@ public class TeacherProfile extends Fragment {
         View view = inflater.inflate(R.layout.teacherprofile, container, false);
 
         logout=view.findViewById(R.id.teacher_rlLogOutnew);
+        teacher_profiledits=view.findViewById(R.id.teacher_profiledits);
+        teacher_profiledits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Teacher Profile Update", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         sharedPreferenceConfig=new SharedPreferenceConfig(getActivity());
         String Number=  sharedPreferenceConfig.getnum("user");

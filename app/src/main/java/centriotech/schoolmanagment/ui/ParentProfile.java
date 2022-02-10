@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -21,18 +22,31 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ParentProfile extends Fragment {
 
     RelativeLayout logout;
-    CircleImageView parent_imageButton;
     SharedPreferenceConfig sharedPreferenceConfig;
+
+    CircleImageView parenet_profiledits;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.parentprofile, container, false);
 
-        parent_imageButton=view.findViewById(R.id.parents_editprofile);
-        logout=view.findViewById(R.id.parent_rlLogOutnew);
 
-        sharedPreferenceConfig=new SharedPreferenceConfig(getActivity());
-        String Number=  sharedPreferenceConfig.getnum("user");
+        logout = view.findViewById(R.id.parent_rlLogOutnew);
+        parenet_profiledits = view.findViewById(R.id.parenet_profiledits);
+
+        sharedPreferenceConfig = new SharedPreferenceConfig(getActivity());
+        String Number = sharedPreferenceConfig.getnum("user");
+
+        parenet_profiledits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ParentProfileUpdate parentProfileUpdate = new ParentProfileUpdate();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame, parentProfileUpdate).commit();
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,13 +66,6 @@ public class ParentProfile extends Fragment {
         });
 
 
-        parent_imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Parent profil edit", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 //        editprofile.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

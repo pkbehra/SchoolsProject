@@ -280,7 +280,6 @@ public class WelcomeActivity extends AppCompatActivity {
                         FragmentManager fmmm = getSupportFragmentManager();
                         fmmm.beginTransaction().replace(R.id.frame, parentProfile).addToBackStack("Parent").commit();
 
-
                     } else if (Type.equals("Transport")) {
 
                         TransportProfile transportProfile = new TransportProfile();
