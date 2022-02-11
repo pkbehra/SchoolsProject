@@ -28,6 +28,7 @@ import java.util.Map;
 import centriotech.schoolmanagment.Utility.SharedPreferenceConfig;
 import centriotech.schoolmanagment.ui.AdminLogin;
 import centriotech.schoolmanagment.ui.AdminProfile;
+import centriotech.schoolmanagment.ui.Dashboard;
 import centriotech.schoolmanagment.ui.ParentLogin;
 import centriotech.schoolmanagment.ui.ParentProfile;
 import centriotech.schoolmanagment.ui.TeacherLogin;
@@ -262,6 +263,11 @@ public class WelcomeActivity extends AppCompatActivity {
 //                    startActivity(intent);
 //                    finish();
 
+                    Dashboard dashboard = new Dashboard();
+                    FragmentManager fmmms = getSupportFragmentManager();
+                    fmmms.beginTransaction().replace(R.id.frame, dashboard).addToBackStack("Teacher").commit();
+
+
                     Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_SHORT).show();
 
 
@@ -286,7 +292,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         FragmentManager fmmm = getSupportFragmentManager();
                         fmmm.beginTransaction().replace(R.id.frame, transportProfile).addToBackStack("Transport").commit();
 
-                    
+
                     } else if (Type.equals("Admin")) {
                         AdminProfile adminProfile = new AdminProfile();
                         FragmentManager fmmm = getSupportFragmentManager();

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -34,55 +35,55 @@ import centriotech.schoolmanagment.Utility.SharedPreferenceConfig;
 import centriotech.schoolmanagment.WelcomeActivity;
 
 public class ParentProfileUpdate extends Fragment {
-    EditText gr_no,roll_no,std_id,full_name,mother_name,dob,doa,gender,religion,
-            cast,classes,division,catogry,blood_grop,house,contact,alt_cont,Email,address,addhar,physical_dis;
+    EditText gr_no, roll_no, std_id, full_name, mother_name, dob, doa, gender, religion,
+            cast, classes, division, catogry, blood_grop, house, contact, alt_cont, Email, address, addhar, physical_dis;
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "https://www.naukarikatta.com/School/ParentProfile.php";
+    private String url = "https://orapune.com/API_TEST/ParentProfile.php";
     RequestQueue requestQueue;
     StringRequest stringRequest;
-    String HttpUrl="https://www.naukarikatta.com/School/UpdateParentProfile.php";
-    String email="";
+    String HttpUrl = "https://orapune.com/API_TEST/UpdateParentProfile.php";
+    String email = "";
 
     SharedPreferenceConfig sharedPreferenceConfig;
-    Button btn_submit;
+    CardView btn_submit;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.parentprofileupdate,container,false);
+        View view = inflater.inflate(R.layout.parentprofileupdate, container, false);
 
-        btn_submit=view.findViewById(R.id.submit);
-        gr_no=view.findViewById(R.id.gr_no);
-        roll_no=view.findViewById(R.id.roll_no);
-        std_id=view.findViewById(R.id.studentid);
-        full_name=view.findViewById(R.id.name);
+        btn_submit = view.findViewById(R.id.parentprofile_update_submit);
+        gr_no = view.findViewById(R.id.parentprofile_update_gr_no);
+        roll_no = view.findViewById(R.id.parentprofile_update_roll_no);
+        std_id = view.findViewById(R.id.parentprofile_update_studentid);
+        full_name = view.findViewById(R.id.parentprofile_update_name);
 
-        mother_name=view.findViewById(R.id.mothername);
-        dob=view.findViewById(R.id.dateofbirth);
-        doa=view.findViewById(R.id.dateofadmission);
+        mother_name = view.findViewById(R.id.parentprofile_update_mothername);
+        dob = view.findViewById(R.id.parentprofile_update_dateofbirth);
+        doa = view.findViewById(R.id.parentprofile_update_dateofadmission);
 
-        gender=view.findViewById(R.id.gender);
-        religion=view.findViewById(R.id.religion);
-        cast=view.findViewById(R.id.caste);
+        gender = view.findViewById(R.id.parentprofile_update_gender);
+        religion = view.findViewById(R.id.parentprofile_update_religion);
+        cast = view.findViewById(R.id.parentprofile_update_caste);
 
-        classes=view.findViewById(R.id.classes);
-        division=view.findViewById(R.id.division);
-        catogry=view.findViewById(R.id.category);
+        classes = view.findViewById(R.id.parentprofile_update_classes);
+        division = view.findViewById(R.id.parentprofile_update_division);
+        catogry = view.findViewById(R.id.parentprofile_update_category);
 
-        blood_grop=view.findViewById(R.id.blood);
-        house=view.findViewById(R.id.house);
+        blood_grop = view.findViewById(R.id.parentprofile_update_blood);
+        house = view.findViewById(R.id.parentprofile_update_house);
 //      contact=view.findViewById(R.id.contact);
 
-        alt_cont=view.findViewById(R.id.altcontact);
-        Email=view.findViewById(R.id.email);
-        address=view.findViewById(R.id.address);
-        addhar=view.findViewById(R.id.addhar);
+        alt_cont = view.findViewById(R.id.parentprofile_update_altcontact);
+        Email = view.findViewById(R.id.parentprofile_update_email);
+        address = view.findViewById(R.id.parentprofile_update_address);
+        addhar = view.findViewById(R.id.parentprofile_update_addhar);
 
 
-        sharedPreferenceConfig=new SharedPreferenceConfig(getActivity());
-        final String Number=  sharedPreferenceConfig.getnum("user");
+        sharedPreferenceConfig = new SharedPreferenceConfig(getActivity());
+        final String Number = sharedPreferenceConfig.getnum("user");
         final String token = SharedPreference.getInstance(getActivity()).getDeviceToken();
 
 
@@ -102,24 +103,23 @@ public class ParentProfileUpdate extends Fragment {
         });
 
 
-
-
         return view;
     }
-    public  void displayParentDetails(final String Contact_No){
+
+    public void displayParentDetails(final String Contact_No) {
 
 
-        mStringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String result) {
                 try {
-                    JSONObject jsonObject=new JSONObject(result);
-                    int success=jsonObject.getInt("success") ;
-                    if (success==1){
-                        JSONArray cars=jsonObject.getJSONArray("cars");
+                    JSONObject jsonObject = new JSONObject(result);
+                    int success = jsonObject.getInt("success");
+                    if (success == 1) {
+                        JSONArray cars = jsonObject.getJSONArray("cars");
 
-                        for(int i=0;i<cars.length();i++){
-                            JSONObject car=cars.getJSONObject(i);
+                        for (int i = 0; i < cars.length(); i++) {
+                            JSONObject car = cars.getJSONObject(i);
 
                             blood_grop.setText(car.get("bloodgroup").toString());
                             gr_no.setText(car.get("grNo").toString());
@@ -142,11 +142,9 @@ public class ParentProfileUpdate extends Fragment {
                             roll_no.setText(car.get("rollno").toString());
 
 
-
-
                         }
 
-                    }   else {
+                    } else {
                         Toast.makeText(getActivity(), "no data found ", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -158,16 +156,15 @@ public class ParentProfileUpdate extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Tag","Error :" + error.toString());
+                Log.i("Tag", "Error :" + error.toString());
 
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams()
-            {
+            protected Map<String, String> getParams() {
 
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("contactno", Contact_No);
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("mobileno", Contact_No);
 
                 return params;
             }
@@ -176,11 +173,11 @@ public class ParentProfileUpdate extends Fragment {
         mRequestQueue.add(mStringRequest);
 
 
-
     }
-    public  void  updateParentProfile(final String GrNo, final String RollNo, final String DateOfAd, final String ContactNo, final String Category , final String FullName
-            , final String MotherName , final String StudentID , final String DateOfBirth, final String Religion, final String Caste , final String AlterCon, final String Email_Id
-            , final String AddressS, final String AadharNo, final String Gender, final String BloodGroup, final String House, final String Classes, final String Divison, final String TokenS){
+
+    public void updateParentProfile(final String GrNo, final String RollNo, final String DateOfAd, final String ContactNo, final String Category, final String FullName
+            , final String MotherName, final String StudentID, final String DateOfBirth, final String Religion, final String Caste, final String AlterCon, final String Email_Id
+            , final String AddressS, final String AadharNo, final String Gender, final String BloodGroup, final String House, final String Classes, final String Divison, final String TokenS) {
 
 
         // Creating string request with post method.
@@ -190,9 +187,8 @@ public class ParentProfileUpdate extends Fragment {
                     public void onResponse(String result) {
 
 
-
                         if (result.trim().equals("User Updated Successfully")) {
-                            Toast.makeText(getActivity(), "User Updated Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getActivity(), WelcomeActivity.class));
 
 
@@ -228,27 +224,27 @@ public class ParentProfileUpdate extends Fragment {
                 // Creating Map String Params.
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("grNo",GrNo );
-                params.put("rollno",RollNo );
-                params.put("dateofadmission",DateOfAd );
-                params.put("contactno",ContactNo );
-                params.put("category",Category);
-                params.put("fullname",FullName );
-                params.put("mothername",MotherName );
-                params.put("studentid",StudentID );
-                params.put("dateofbirth",DateOfBirth );
-                params.put("religion",Religion );
-                params.put("caste",Caste );
-                params.put("alternatecontactno",AlterCon );
-                params.put("email",Email_Id );
-                params.put("address",AddressS );
-                params.put("aadharno",AadharNo );
-                params.put("gender",Gender );
-                params.put("bloodgroup",BloodGroup );
-                params.put("House",House );
-                params.put("class",Classes );
-                params.put("division",Divison );
-                params.put("token",TokenS );
+                params.put("grNo", GrNo);
+                params.put("rollno", RollNo);
+                params.put("dateofadmission", DateOfAd);
+                params.put("mobileno", ContactNo);
+                params.put("category", Category);
+                params.put("fullname", FullName);
+                params.put("mothername", MotherName);
+                params.put("studentid", StudentID);
+                params.put("dateofbirth", DateOfBirth);
+                params.put("religion", Religion);
+                params.put("caste", Caste);
+                params.put("alternatecontactno", AlterCon);
+                params.put("email", Email_Id);
+                params.put("address", AddressS);
+                params.put("aadharno", AadharNo);
+                params.put("gender", Gender);
+                params.put("bloodgroup", BloodGroup);
+                params.put("House", House);
+                params.put("class", Classes);
+                params.put("division", Divison);
+                params.put("token", TokenS);
 
                 return params;
             }
@@ -262,10 +258,7 @@ public class ParentProfileUpdate extends Fragment {
         requestQueue.add(stringRequest);
 
 
-
-
     }
-
 
 
 }

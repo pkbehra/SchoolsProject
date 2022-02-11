@@ -44,7 +44,7 @@ public class ParentProfile extends Fragment {
 
                 ParentProfileUpdate parentProfileUpdate = new ParentProfileUpdate();
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.frame, parentProfileUpdate).commit();
+                fragmentManager.beginTransaction().replace(R.id.frame, parentProfileUpdate).addToBackStack("Profile").commit();
             }
         });
 

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import centriotech.schoolmanagment.LoginActivity;
 import centriotech.schoolmanagment.R;
@@ -22,22 +23,26 @@ public class TeacherProfile extends Fragment {
     RelativeLayout logout;
     CircleImageView teacher_profiledits;
     SharedPreferenceConfig sharedPreferenceConfig;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.teacherprofile, container, false);
 
-        logout=view.findViewById(R.id.teacher_rlLogOutnew);
-        teacher_profiledits=view.findViewById(R.id.teacher_profiledits);
+        logout = view.findViewById(R.id.teacher_rlLogOutnew);
+        teacher_profiledits = view.findViewById(R.id.teacher_profiledits);
         teacher_profiledits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Teacher Profile Update", Toast.LENGTH_SHORT).show();
+                TeacherProfileUpdate teacherProfileUpdate = new TeacherProfileUpdate();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame, teacherProfileUpdate).addToBackStack("Profile").commit();
+
             }
         });
 
-        sharedPreferenceConfig=new SharedPreferenceConfig(getActivity());
-        String Number=  sharedPreferenceConfig.getnum("user");
+        sharedPreferenceConfig = new SharedPreferenceConfig(getActivity());
+        String Number = sharedPreferenceConfig.getnum("user");
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
