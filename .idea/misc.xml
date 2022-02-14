@@ -57,6 +57,7 @@
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/fragment_home.xml" value="0.1213768115942029" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/fragment_notifications.xml" value="0.1213768115942029" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/holidaylayoutadapter.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/nav_header_home2.xml" value="0.1213768115942029" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/parentloginlayout.xml" value="0.1" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/parentprofile.xml" value="0.13541666666666666" />
@@ -75,6 +76,7 @@
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/transportlayout.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/transportloginlayout.xml" value="0.1" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/transportupdate.xml" value="0.1" />
+        <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/viewholiday.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/pritesh/AndroidStudioProjects/SchoolManagment/app/src/main/res/layout/viewstudentadapterlayout.xml" value="0.13541666666666666" />
       </map>
     </option>
